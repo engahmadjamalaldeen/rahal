@@ -19,13 +19,13 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     ssl: {
         rejectUnauthorized: false,
       },
-    url: 'postgresql://postgres:jBFQY3QZbBQth47HBnDX@containers-us-west-122.railway.app:5941/railway',
+    url: 'https://rahaldatabase.thinbackend.app',
     type: 'postgres',
-    host: 'containers-us-west-122.railway.app',
+    host: 'db.thin.dev',
     port: 5941,
-    username: 'postgres',
-    password: 'jBFQY3QZbBQth47HBnDX',
-    database: 'railway',
+    username: 'dTghyKAULiEmagxnakRJPbklQWYDEdwY',
+    password: 'TiuTlXxiwxTjcAYxMzXyEhmXlOZpTHwp',
+    database: 'f050b5c7-f16f-419f-85fc-1f69e1a3e80d',
     entities: [City, Blog, CityImage, Customer, Membership, Place, Trip, Reservation, ReservationType, Amenity, Review, Interest, Category, Room, MembershipUser],
     synchronize: true
 }
