@@ -1,0 +1,1 @@
+{"version":3,"file":"create-client-reservation-dto.js","sourceRoot":"","sources":["../../../src/reservation/dto/create-client-reservation-dto.ts"],"names":[],"mappings":";;;AAEA,MAAa,0BAA0B;CAOtC;AAPD,gEAOC;AAGD,IAAY,SAMX;AAND,WAAY,SAAS;IACjB,8BAAiB,CAAA;IACjB,8BAAiB,CAAA;IACjB,gCAAmB,CAAA;IACnB,oDAAuC,CAAA;IACvC,kDAAqC,CAAA;AACzC,CAAC,EANW,SAAS,GAAT,iBAAS,KAAT,iBAAS,QAMpB"}
