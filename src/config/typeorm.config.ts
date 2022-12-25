@@ -19,13 +19,13 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     ssl: {
         rejectUnauthorized: false,
       },
-    url: 'postgresql://dTghyKAULiEmagxnakRJPbklQWYDEdwY:TiuTlXxiwxTjcAYxMzXyEhmXlOZpTHwp@db.thin.dev/f050b5c7-f16f-419f-85fc-1f69e1a3e80d',
+    url: 'postgres://rahaldatabase:p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn@dpg-cek5mdcgqg4ekmegvj5g-a.oregon-postgres.render.com/rahaldatabase',
     type: 'postgres',
-    host: 'db.thin.dev',
+    host: 'dpg-cek5mdcgqg4ekmegvj5g-a',
     port: 5432,
-    username: 'dTghyKAULiEmagxnakRJPbklQWYDEdwY',
-    password: 'TiuTlXxiwxTjcAYxMzXyEhmXlOZpTHwp',
-    database: 'f050b5c7-f16f-419f-85fc-1f69e1a3e80d',
+    username: 'rahaldatabase',
+    password: 'p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn',
+    database: 'rahaldatabase',
     entities: [City, Blog, CityImage, Customer, Membership, Place, Trip, Reservation, ReservationType, Amenity, Review, Interest, Category, Room, MembershipUser],
     synchronize: true
 }
