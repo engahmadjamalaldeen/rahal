@@ -19,7 +19,7 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     ssl: {
         rejectUnauthorized: false,
       },
-    url: 'psql "postgresql://dTghyKAULiEmagxnakRJPbklQWYDEdwY:TiuTlXxiwxTjcAYxMzXyEhmXlOZpTHwp@db.thin.dev/f050b5c7-f16f-419f-85fc-1f69e1a3e80d"',
+    url: 'postgresql://dTghyKAULiEmagxnakRJPbklQWYDEdwY:TiuTlXxiwxTjcAYxMzXyEhmXlOZpTHwp@db.thin.dev/f050b5c7-f16f-419f-85fc-1f69e1a3e80d',
     type: 'postgres',
     host: 'db.thin.dev',
     port: 5432,
