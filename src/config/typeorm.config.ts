@@ -19,13 +19,13 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     ssl: {
         rejectUnauthorized: false,
       },
-    url: 'postgresql://kMgsfewTVWmNoheLKGOfFEjKdJCrkTmP:TeIRgmwNozCNDIChupQXEEauyLfnZdCU@db.thin.dev/74e9f583-2706-4114-970c-af3ac38c4845',
-    type: 'postgres',
-    host: 'db.thin.dev',
-    port: 5432,
-    username: 'kMgsfewTVWmNoheLKGOfFEjKdJCrkTmP',
-    password: 'TeIRgmwNozCNDIChupQXEEauyLfnZdCU',
-    database: '74e9f583-2706-4114-970c-af3ac38c4845',
+      url: 'postgres://vnhaauvcffwinb:4a9df12d227133ed840a05539ab59d5902d0a72e380694f979254c9d412f64e6@ec2-54-155-110-181.eu-west-1.compute.amazonaws.com:5432/d9s9trld8fis1c',
+      type: 'postgres',
+      host: 'ec2-54-155-110-181.eu-west-1.compute.amazonaws.com',
+      port: 5432,
+      username: 'vnhaauvcffwinb',
+      password: '4a9df12d227133ed840a05539ab59d5902d0a72e380694f979254c9d412f64e6',
+      database: 'd9s9trld8fis1c',
     entities: [City, Blog, CityImage, Customer, Membership, Place, Trip, Reservation, ReservationType, Amenity, Review, Interest, Category, Room, MembershipUser],
     synchronize: true
 }
