@@ -22,7 +22,7 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     url: 'https://rahaldatabase.thinbackend.app',
     type: 'postgres',
     host: 'db.thin.dev',
-    port: 5941,
+    port: 5432,
     username: 'dTghyKAULiEmagxnakRJPbklQWYDEdwY',
     password: 'TiuTlXxiwxTjcAYxMzXyEhmXlOZpTHwp',
     database: 'f050b5c7-f16f-419f-85fc-1f69e1a3e80d',
