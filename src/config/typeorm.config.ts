@@ -28,4 +28,4 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     database: 'rahaldatabase',
     entities: [City, Blog, CityImage, Customer, Membership, Place, Trip, Reservation, ReservationType, Amenity, Review, Interest, Category, Room, MembershipUser],
     synchronize: true
-}
+}//
