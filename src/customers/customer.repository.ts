@@ -72,12 +72,12 @@ export class CustomerRepository extends Repository<Customer> {
         // delete customer.salt;
         return customer;
     }
-    async updateCustomer(createCustomerDto: CreateCustomerDto, customRepository: CustomRepository,  cityRepository: CityRepository, interestRepository: InterestRepository): Promise<Customer> {
+    async updateCustomer(createCustomerDto: CreateCustomerDto,  cityRepository: CityRepository, interestRepository: InterestRepository): Promise<Customer> {
         const { id, phone, fullName, password, email, cityId, gender, status, numOfKids, interests } = createCustomerDto;
         
         const salt = await bcrypt.genSalt();
 
-        const customer = await customRepository.findOne({ where: { id: cityId } });;
+        const customer = await this.findOne({ where: { id: cityId } });;
         customer.phone = phone;
         customer.fullName = fullName;
         customer.password = await this.hashPassword(password, salt);
