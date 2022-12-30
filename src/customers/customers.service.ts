@@ -71,7 +71,27 @@ export class CustomersService {
 
         return customer;
     }
+    async updateCustomer(createCustomerDto: CreateCustomerDto): Promise<Customer> {
+        const { phone, fullName, password, email, cityId, gender, status, numOfKids } = createCustomerDto;
+        let customer = await this.customerRepository.updateCustomer(createCustomerDto, this.customerRepository,  this.cityRepository, this.interestRepository);
 
+        let payload: JwtPayload = { phone } as JwtPayload;
+        const accessToken = await this.jwtService.sign(payload);
+        customer.accessToken = accessToken;
+
+        try{
+            await this.customerRepository.save(customer);
+        }catch(e){
+            if(e.code === '23505'){
+                throw new ConflictException("Phone already exists");
+            }
+            throw new InternalServerErrorException("Error code:"+ e.code);
+        }
+        delete customer.password;
+        delete customer.salt;
+
+        return customer;
+    }
     async signIn(signInCustomerDto: SignInCustomerDto): Promise<Customer> {
         let customer = await this.customerRepository.validatePassword(signInCustomerDto);
 

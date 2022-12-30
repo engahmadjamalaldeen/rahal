@@ -24,7 +24,11 @@ export class CustomersController {
     addCustomer(@Body() createCustomerDto: CreateCustomerDto): Promise<Customer> {
         return this.customersService.addCustomer(createCustomerDto);
     }
-
+    @Post('/uodateCustomer')
+    @UsePipes(ValidationPipe)
+    updateCustomer(@Body() createCustomerDto: CreateCustomerDto): Promise<Customer> {
+        return this.customersService.updateCustomer(createCustomerDto);
+    }
     @Post('/signin')
     signIn(@Body() signInCustomerDto: SignInCustomerDto): Promise<Customer> {
         return this.customersService.signIn(signInCustomerDto);

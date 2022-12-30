@@ -72,6 +72,61 @@ export class CustomerRepository extends Repository<Customer> {
         // delete customer.salt;
         return customer;
     }
+    async updateCustomer(createCustomerDto: CreateCustomerDto, customRepository: CustomRepository,  cityRepository: CityRepository, interestRepository: InterestRepository): Promise<Customer> {
+        const { id, phone, fullName, password, email, cityId, gender, status, numOfKids, interests } = createCustomerDto;
+        
+        const salt = await bcrypt.genSalt();
+
+        const customer = await customRepository.findOne({ where: { id: cityId } });;
+        customer.phone = phone;
+        customer.fullName = fullName;
+        customer.password = await this.hashPassword(password, salt);
+        customer.salt = salt;
+        customer.email = email;
+        customer.numOfKids = numOfKids;
+        const found = await cityRepository.findOne({ where: { id: cityId } });
+        if (found) {
+            customer.cityId = cityId;
+        }
+        else {
+            throw new NotFoundException("City Id not found");
+        }
+        if(Object.values(Gender).includes(gender)){
+            customer.gender = gender;
+        }
+        else{
+            throw new ForbiddenException('Customer gender should be {MALE, FEMALE}');
+        }
+        if(Object.values(Status).includes(status)){
+            customer.status = status;
+        }
+        else{
+            throw new ForbiddenException('Customer status should be {MARRIED, SINGLE}');
+        }
+        customer.interests = [];
+        for(let i = 0; i < interests.length; i++){
+            let interest = await interestRepository.findOne({ where: { id: interests[i] } });
+            if (interest) {
+                customer.interests.push(interest);
+            }
+            else {
+                throw new NotFoundException("Interest Id not found");
+            }
+        }
+
+        // try{
+        //     await this.save(customer);
+        // }catch(e){
+        //     if(e.code === '23505'){
+        //         throw new ConflictException("Phone already exists");
+        //     }
+        //     throw new InternalServerErrorException("Error code:"+ e.code);
+        // }
+        
+        // delete customer.password;
+        // delete customer.salt;
+        return customer;
+    }
 
     async validatePassword(signInCustomerDto: SignInCustomerDto): Promise<Customer> {
         const {phone, password} = signInCustomerDto;

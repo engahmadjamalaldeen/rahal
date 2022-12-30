@@ -19,7 +19,8 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     ssl: {
         rejectUnauthorized: false,
       },
-    url: 'postgres://rahaldatabase:p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn@dpg-cek5mdcgqg4ekmegvj5g-a.oregon-postgres.render.com/rahaldatabase',
+      
+    url: 'postgres://rahaldatabase:p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn@dpg-cek5mdcgqg4ekmegvj5g-a/rahaldatabase',
     type: 'postgres',
     host: 'dpg-cek5mdcgqg4ekmegvj5g-a',
     port: 5432,
