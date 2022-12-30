@@ -79,7 +79,10 @@ export class CustomerRepository extends Repository<Customer> {
 
         const customer = await this.findOne({ where: { id: cityId } });;
         customer.phone = phone;
-        customer.fullName = fullName;
+        if(customer.fullName != fullName) {
+            customer.fullName = fullName;
+        }
+
         customer.password = await this.hashPassword(password, salt);
         customer.salt = salt;
         customer.email = email;
