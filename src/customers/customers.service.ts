@@ -131,7 +131,7 @@ export class CustomersService {
         if (!found) {
             throw new NotFoundException(`Customer with ID ${id} not found`);
         }
-        found.city.reservations = city;
+       
 
         delete found.accessToken;
         delete found.password;
