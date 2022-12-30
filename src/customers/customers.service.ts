@@ -131,11 +131,13 @@ export class CustomersService {
         if (!found) {
             throw new NotFoundException(`Customer with ID ${id} not found`);
         }
-        found.city = city;
+        found.city.reservations = city;
+
         delete found.accessToken;
         delete found.password;
         delete found.salt;
-
+        const res = new Map()
+        res.set("name","Logrocket")
         var map = {
             'customer': found,
             'city': city
