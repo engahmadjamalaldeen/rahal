@@ -117,7 +117,7 @@ export class CustomersService {
 
     async getCustomerById(id: number){
         const found = await this.customerRepository.findOne({ where: { id: id },
-             relations: ['reservations', 'reservations.place',  'reservations.room', 'tripsCreated', 'interests'] });
+             relations: ['reservations', 'reservations.place', 'place.city',  'reservations.room', 'tripsCreated', 'interests'] });
   
         // const place = await this.placeRepository.findOne({ where: { id: found[0].places[0].id }});
         // return place;
