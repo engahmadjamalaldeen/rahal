@@ -1,4 +1,5 @@
 export class CreateCustomerDto {
+    id: number;
     phone: string;
     fullName: string;
     password: string;

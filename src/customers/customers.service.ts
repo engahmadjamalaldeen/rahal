@@ -72,7 +72,7 @@ export class CustomersService {
         return customer;
     }
     async updateCustomer(createCustomerDto: CreateCustomerDto): Promise<Customer> {
-        const { phone, fullName, password, email, cityId, gender, status, numOfKids } = createCustomerDto;
+        const { id, phone, fullName, password, email, cityId, gender, status, numOfKids } = createCustomerDto;
         let customer = await this.customerRepository.updateCustomer(createCustomerDto, this.customerRepository,  this.cityRepository, this.interestRepository);
 
         let payload: JwtPayload = { phone } as JwtPayload;
