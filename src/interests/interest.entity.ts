@@ -11,6 +11,8 @@ export class Interest extends BaseEntity {
     @Column()
     name: string;
 
+    //
+    
     @Column({nullable: true})
     image: string;
 
