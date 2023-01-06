@@ -8,5 +8,6 @@ import { CreateReservationDto } from "./dto/create-reservation-dto";
 import { Reservation } from "./reservation.entity";
 export declare class ReservationRepository extends Repository<Reservation> {
     addReservation(createReservationDto: CreateReservationDto, placeRepository: PlaceRepository, customerRepository: CustomerRepository, roomRepository: RoomRepository): Promise<Reservation>;
+    changeReservationStatus(createReservationDto: CreateReservationDto, id: number): Promise<Reservation>;
     clientAddReservation(createClientReservationDto: CreateClientReservationDto, placeRepository: PlaceRepository, customerRepository: CustomerRepository, reservationTypeRepository: ReservationTypeRepository): Promise<Reservation>;
 }

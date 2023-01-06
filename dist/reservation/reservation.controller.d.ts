@@ -19,6 +19,7 @@ export declare class ReservationController {
     reservationByFilters(placeId: number, numOfKids: number, gender: Gender, status: Status, numOfKidsOpe: Operation): Promise<any>;
     addReservation(createReservationDto: CreateReservationDto): Promise<Reservation>;
     clientAddReservation(createClientReservationDto: CreateClientReservationDto): Promise<Reservation>;
+    changeReservationStatus(createReservationDto: CreateReservationDto, id: number): Promise<Reservation>;
     getReservationById(id: number): Promise<Reservation>;
     deleteReservationById(id: number): Promise<boolean>;
     getReservationByPlaceId(placeId: number): Promise<Reservation[]>;

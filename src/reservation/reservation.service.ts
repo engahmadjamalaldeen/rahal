@@ -107,7 +107,9 @@ export class ReservationService {
     async addReservation(createReservationDto: CreateReservationDto): Promise<Reservation> {
         return this.reservationRepository.addReservation(createReservationDto, this.placeRepository, this.customerRepository, this.roomRepository);
     }
-
+    async changeReservationStatus(createReservationDto: CreateReservationDto, id: number): Promise<Reservation> {
+        return this.reservationRepository.changeReservationStatus(createReservationDto, id);
+    }
     async clientAddReservation(createClientReservationDto: CreateClientReservationDto): Promise<Reservation> {
         return this.reservationRepository.clientAddReservation(createClientReservationDto, this.placeRepository, this.customerRepository, this.reservationTypeRepository);
     }

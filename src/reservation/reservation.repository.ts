@@ -15,11 +15,13 @@ import { Reservation } from "./reservation.entity";
 @CustomRepository(Reservation)
 export class ReservationRepository extends Repository<Reservation> {
     async addReservation(createReservationDto: CreateReservationDto, placeRepository: PlaceRepository, customerRepository: CustomerRepository, roomRepository: RoomRepository): Promise<Reservation> {
-        const { type, fromDate, toDate, customerId, placeId, roomId } = createReservationDto;
+        const { type, status, fromDate, toDate, customerId, placeId, roomId } = createReservationDto;
         
         const reservation = new Reservation();
         const place = await placeRepository.findOne({ where: { id: placeId } });
-        
+        if (status) {
+            reservation.status = status;
+        }
         if (place) {
             reservation.place = place;
         }
@@ -107,7 +109,18 @@ export class ReservationRepository extends Repository<Reservation> {
         
     }
 
+    async changeReservationStatus(createReservationDto: CreateReservationDto, id:number): Promise<Reservation> {
+        const { type, status, fromDate, toDate, customerId, placeId, roomId } = createReservationDto;
+        
+        const reservation = await this.findOne({ where: { id: id } });
+        reservation.status = status;
 
+        this.createQueryBuilder()
+            .update(reservation)
+            .execute();
+        return reservation;
+        
+    }
 
 
     async clientAddReservation(createClientReservationDto: CreateClientReservationDto, placeRepository: PlaceRepository, customerRepository: CustomerRepository, reservationTypeRepository: ReservationTypeRepository): Promise<Reservation> {

@@ -94,6 +94,9 @@ let ReservationService = class ReservationService {
     async addReservation(createReservationDto) {
         return this.reservationRepository.addReservation(createReservationDto, this.placeRepository, this.customerRepository, this.roomRepository);
     }
+    async changeReservationStatus(createReservationDto, id) {
+        return this.reservationRepository.changeReservationStatus(createReservationDto, id);
+    }
     async clientAddReservation(createClientReservationDto) {
         return this.reservationRepository.clientAddReservation(createClientReservationDto, this.placeRepository, this.customerRepository, this.reservationTypeRepository);
     }

@@ -5,6 +5,7 @@ import { Place } from "src/places/place.entity";
 import { ReservationType } from "src/reservationـtype/reservationـtype.entity";
 import { Room } from "src/rooms/room.entity";
 import { AfterLoad, BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Status } from "./dto/create-client-reservation-dto";
 
 @Entity()
 export class Reservation extends BaseEntity {
@@ -16,6 +17,9 @@ export class Reservation extends BaseEntity {
 
     @Column()
     placeType: PlaceType;
+
+    @Column()
+    status: Status;
     // @Column()
     // reservationType: ReservationType;
 

@@ -23,6 +23,7 @@ export declare class ReservationService {
         reservationsBasedOnRoom: any[];
     }>;
     addReservation(createReservationDto: CreateReservationDto): Promise<Reservation>;
+    changeReservationStatus(createReservationDto: CreateReservationDto, id: number): Promise<Reservation>;
     clientAddReservation(createClientReservationDto: CreateClientReservationDto): Promise<Reservation>;
     getReservationById(id: number): Promise<Reservation>;
     deleteReservationById(id: number): Promise<boolean>;

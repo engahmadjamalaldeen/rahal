@@ -63,7 +63,11 @@ export class ReservationController {
     clientAddReservation(@Body() createClientReservationDto: CreateClientReservationDto): Promise<Reservation> {
         return this.reservationService.clientAddReservation(createClientReservationDto);
     }
+    @Post('/changeReservationStatus')
 
+    changeReservationStatus(@Body() createReservationDto: CreateReservationDto, id: number): Promise<Reservation> {
+        return this.reservationService.changeReservationStatus(createReservationDto, id);
+    }
     @Get('/:id')
     getReservationById(@Param('id', ParseIntPipe) id: number): Promise<Reservation> {
         return this.reservationService.getReservationById(id);

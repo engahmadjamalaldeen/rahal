@@ -49,6 +49,9 @@ let ReservationController = class ReservationController {
     clientAddReservation(createClientReservationDto) {
         return this.reservationService.clientAddReservation(createClientReservationDto);
     }
+    changeReservationStatus(createReservationDto, id) {
+        return this.reservationService.changeReservationStatus(createReservationDto, id);
+    }
     getReservationById(id) {
         return this.reservationService.getReservationById(id);
     }
@@ -135,6 +138,13 @@ __decorate([
     __metadata("design:paramtypes", [create_client_reservation_dto_1.CreateClientReservationDto]),
     __metadata("design:returntype", Promise)
 ], ReservationController.prototype, "clientAddReservation", null);
+__decorate([
+    (0, common_1.Post)('/changeReservationStatus'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_reservation_dto_1.CreateReservationDto, Number]),
+    __metadata("design:returntype", Promise)
+], ReservationController.prototype, "changeReservationStatus", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),

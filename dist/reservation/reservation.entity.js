@@ -16,6 +16,7 @@ const create_place_dto_1 = require("../places/dto/create-place-dto");
 const place_entity_1 = require("../places/place.entity");
 const room_entity_1 = require("../rooms/room.entity");
 const typeorm_1 = require("typeorm");
+const create_client_reservation_dto_1 = require("./dto/create-client-reservation-dto");
 let Reservation = class Reservation extends typeorm_1.BaseEntity {
     setComputed() {
         let fromDateTime = new Date(this.fromDate);
@@ -35,6 +36,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Reservation.prototype, "placeType", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Reservation.prototype, "status", void 0);
 __decorate([
     (0, class_transformer_1.Transform)(x => new Date()),
     (0, typeorm_1.Column)('text'),
