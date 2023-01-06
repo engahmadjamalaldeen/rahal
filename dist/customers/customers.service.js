@@ -104,14 +104,15 @@ let CustomersService = class CustomersService {
         return customer;
     }
     async getCustomerById(id) {
-        const found = await this.customerRepository.findOne({ where: { id: id },
-            relations: [
-                'reservations',
-                'reservations.place',
-                'reservations.room',
-                'tripsCreated',
-                'interests'
-            ] });
+        const found = await this.customerRepository.createQueryBuilder("Customer")
+            .leftJoinAndSelect('Customer.reservations', 'reservation')
+            .leftJoinAndSelect('reservation.place', 'place')
+            .leftJoinAndSelect('place.city', 'city')
+            .leftJoinAndSelect('reservation.room', 'room')
+            .leftJoinAndSelect('Customer.interests', 'interests')
+            .leftJoinAndSelect('Customer.tripsCreated', 'tripsCreated')
+            .where({ id: id })
+            .getOne();
         const city = await this.cityRepository.findOne({ where: { id: found.cityId } });
         if (!found) {
             throw new common_1.NotFoundException(`Customer with ID ${id} not found`);

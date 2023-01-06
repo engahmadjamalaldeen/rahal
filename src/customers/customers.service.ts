@@ -116,24 +116,28 @@ export class CustomersService {
     }
 
     async getCustomerById(id: number){
-        const found = await this.customerRepository.findOne({ where: { id: id },
-            relations: [
-            'reservations', 
-            'reservations.place', 
-            'reservations.room', 
-            'tripsCreated', 
-            'interests'
-        ]});
+        // const found = await this.customerRepository.findOne({ where: { id: id },
+        //     relations: [
+        //     'reservations', 
+        //     'reservations.place', 
+        //     'reservations.room', 
+        //     'tripsCreated', 
+        //     'interests'
+        // ]});
   
         // const place = await this.placeRepository.findOne({ where: { id: found[0].places[0].id }});
         // return place;
-        const city = await this.cityRepository.findOne({ where: { id: found.cityId }});
-        // const customer = await this.customerRepository.createQueryBuilder("Customer")
-        //     .leftJoinAndSelect('Customer.reservations', 'reservation')
-        //     .leftJoinAndSelect('reservation.place', 'place')
-        //     .leftJoinAndSelect('reservation.room', 'room')
-        //     .where({id: id})
-        //     .getMany();  
+        
+        const found = await this.customerRepository.createQueryBuilder("Customer")
+            .leftJoinAndSelect('Customer.reservations', 'reservation')
+            .leftJoinAndSelect('reservation.place', 'place')
+            .leftJoinAndSelect('place.city', 'city')
+            .leftJoinAndSelect('reservation.room', 'room')
+            .leftJoinAndSelect('Customer.interests', 'interests')
+            .leftJoinAndSelect('Customer.tripsCreated', 'tripsCreated')
+            .where({id: id})
+            .getOne();  
+            const city = await this.cityRepository.findOne({ where: { id: found.cityId }});
         if (!found) {
             throw new NotFoundException(`Customer with ID ${id} not found`);
         }
