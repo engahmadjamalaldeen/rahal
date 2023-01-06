@@ -30,7 +30,10 @@ export declare class ReservationService {
     getReservationByPlaceId(placeId: number): Promise<Reservation[]>;
     getReservationByCustomerId(customerId: number): Promise<Reservation[]>;
     getPlaceIncome(placeId: number, fromDate: string, toDate: string): Promise<any[]>;
-    getreservationByInterests(placeId: number): Promise<any[]>;
+    getreservationByInterests(placeId: number): Promise<{
+        total: number;
+        sub: any[];
+    }>;
     getreservationByCities(placeId: number): Promise<any[]>;
     getreservationByReservationsTypes(placeId: number): Promise<any[]>;
     reservationByFilters(placeId: number, numOfKids: number, gender: Gender, status: Status, numOfKidsOpe: Operation): Promise<any>;

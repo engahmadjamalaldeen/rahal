@@ -229,7 +229,15 @@ let ReservationService = class ReservationService {
             if (!found) {
                 throw new common_1.NotFoundException(`No Reservations found for place ID: ${placeId}`);
             }
-            return found;
+            let total = 0;
+            for (let index = 0; index < found.length; index++) {
+                total += +found[index].total;
+            }
+            var map1 = {
+                'total': total,
+                'sub': found
+            };
+            return map1;
         }
     }
     async getreservationByCities(placeId) {
