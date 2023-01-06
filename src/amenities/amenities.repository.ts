@@ -9,10 +9,11 @@ import { CreateAmenityDto } from "./dto/create-amenitie-dto";
 @CustomRepository(Amenity)
 export class AmenityRepository extends Repository<Amenity> {
     async addAmenity(createAmenityDto: CreateAmenityDto, reservationTypeRepository: ReservationTypeRepository): Promise<Amenity> {
-        const { name, image } = createAmenityDto;
+        const { name, nameAR, image } = createAmenityDto;
         
         const amenity = new Amenity();
         amenity.name = name;
+        amenity.nameAR = nameAR;
         amenity.image = image;
         // const found = await reservationTypeRepository.findOne({ where: { id: reservationTypeId } });
         // if(found){

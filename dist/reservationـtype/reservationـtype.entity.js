@@ -32,6 +32,14 @@ __decorate([
     __metadata("design:type", String)
 ], ReservationType.prototype, "description", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], ReservationType.prototype, "nameAR", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], ReservationType.prototype, "descriptionAR", void 0);
+__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], ReservationType.prototype, "price", void 0);

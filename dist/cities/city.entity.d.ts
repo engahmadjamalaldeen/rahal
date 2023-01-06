@@ -7,6 +7,8 @@ export declare class City extends BaseEntity {
     id: number;
     name: string;
     description: string;
+    nameAR: string;
+    descriptionAR: string;
     places: Place[];
     customers: Customer[];
     blogs: Blog[];

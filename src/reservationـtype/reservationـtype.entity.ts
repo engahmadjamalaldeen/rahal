@@ -19,6 +19,12 @@ export class ReservationType extends BaseEntity {
     @Column()
     description: string;
 
+    @Column({nullable: true})
+    nameAR: string;
+
+    @Column({nullable: true})
+    descriptionAR: string;
+
     @Column()
     price: number;
     @Column({nullable: true})

@@ -16,11 +16,15 @@ export class Place extends BaseEntity {
     name: string;
     @Column({nullable: true})
     price: string;
-
+    @Column({nullable: true})
+    usdPrice: number;
 
     @Column({nullable: true})
     description: string;
-
+    @Column({nullable: true})
+    nameAR: string;
+    @Column({nullable: true})
+    descriptionAR: string;
     @Column()
     type: PlaceType
 

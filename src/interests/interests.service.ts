@@ -48,7 +48,7 @@ export class InterestsService {
     }
 
     async editInterestById(id: number, createInterestDto: CreateInterestDto): Promise<Interest> {
-        const { name, image } = createInterestDto;
+        const { name, nameAR, image } = createInterestDto;
         let found = await this.interestRepository.findOne({ where: { id: id } });
 
         if (!found) {
@@ -57,7 +57,7 @@ export class InterestsService {
 
         const updated = await this.interestRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, image: image })
+            .set({ name: name, nameAR: nameAR, image: image })
             .where("id = :id", { id: found.id })
             .execute();
             

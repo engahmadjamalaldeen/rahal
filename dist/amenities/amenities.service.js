@@ -37,14 +37,14 @@ let AmenitiesService = class AmenitiesService {
         return found;
     }
     async editAmenityById(id, createAmenityDto) {
-        const { name, image } = createAmenityDto;
+        const { name, nameAR, image } = createAmenityDto;
         let found = await this.amenityRepository.findOne({ where: { id: id } });
         if (!found) {
             throw new common_1.NotFoundException(`Amenity with ID ${id} not found`);
         }
         const updated = await this.amenityRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, image: image })
+            .set({ name: name, nameAR: nameAR, image: image })
             .where("id = :id", { id: found.id })
             .execute();
         found = await this.amenityRepository.findOne({ where: { id: id } });

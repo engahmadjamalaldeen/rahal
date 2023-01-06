@@ -27,6 +27,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
+], Amenity.prototype, "nameAR", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
 ], Amenity.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.ManyToMany)(() => reservation_type_entity_1.ReservationType, reservationType => reservationType.amenities),

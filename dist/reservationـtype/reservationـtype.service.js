@@ -46,7 +46,7 @@ let ReservationTypeService = class ReservationTypeService {
         return found;
     }
     async editReservationTypeById(id, createReservationTypeDto) {
-        const { name, description, price, priceType, placeId, amenityIds } = createReservationTypeDto;
+        const { name, description, nameAR, descriptionAR, price, priceType, placeId, amenityIds } = createReservationTypeDto;
         let found = await this.reservationTypeRepository.findOne({ where: { id: id } });
         if (!found) {
             throw new common_1.NotFoundException(`Reservation with ID ${id} not found`);
@@ -66,7 +66,7 @@ let ReservationTypeService = class ReservationTypeService {
         await this.reservationTypeRepository.save(found);
         const updated = await this.reservationTypeRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, description: description, price: price, priceType: priceType })
+            .set({ name: name, description: description, nameAR: nameAR, descriptionAR: descriptionAR, price: price, priceType: priceType })
             .where("id = :id", { id: found.id })
             .execute();
         found = await this.reservationTypeRepository.findOne({ where: { id: id }, relations: ['rooms', 'amenities'] });

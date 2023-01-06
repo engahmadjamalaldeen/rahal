@@ -1,6 +1,8 @@
 export declare class CreateReservationTypeDto {
     name: string;
     description: string;
+    nameAR: string;
+    descriptionAR: string;
     price: number;
     usdPrice: number;
     priceType: PriceType;

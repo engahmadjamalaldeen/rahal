@@ -15,6 +15,11 @@ export class City extends BaseEntity {
     @Column()
     description: string;
 
+    @Column({ nullable: true })
+    nameAR: string;
+
+    @Column({ nullable: true })
+    descriptionAR: string;
     @OneToMany(() => Place, place => place.city, {eager: true})
     places: Place[]
 

@@ -28,6 +28,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
+], Interest.prototype, "nameAR", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
 ], Interest.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.ManyToMany)(() => customer_entity_1.Customer, customer => customer.interests, { cascade: true }),

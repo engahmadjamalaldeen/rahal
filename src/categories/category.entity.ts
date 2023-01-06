@@ -7,6 +7,8 @@ export class Category extends BaseEntity {
 
     @Column()
     name: string;
+    @Column({nullable: true})
+    nameAR: string;
     @Column()
     page: string;
     @Column()

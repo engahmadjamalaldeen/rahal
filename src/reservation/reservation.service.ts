@@ -250,7 +250,16 @@ export class ReservationService {
                 }
             }
         });
-
+        let total = 0;
+            for (let index = 0; index < incomes.length; index++) {
+                 total += +incomes[index].total;
+                
+            }
+        var map1 = {
+            'total': total,
+            'sub': incomes
+         };
+        return map1;
         return incomes;
     }
 
@@ -282,7 +291,7 @@ export class ReservationService {
             var map1 = {
                 'total': total,
                 'sub': found
-        };
+             };
             return map1;
         }
     }

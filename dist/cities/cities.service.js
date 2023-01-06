@@ -58,7 +58,7 @@ let CitiesService = class CitiesService {
         return found;
     }
     async editCityById(id, createCityDto) {
-        const { name, description } = createCityDto;
+        const { name, description, nameAR, descriptionAR } = createCityDto;
         let found = await this.cityRepository.findOne({ where: { id: id } });
         console.log(found);
         console.log(name);
@@ -68,7 +68,7 @@ let CitiesService = class CitiesService {
         }
         const updated = await this.cityRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, description: description })
+            .set({ name: name, description: description, nameAR: nameAR, descriptionAR: descriptionAR })
             .where("id = :id", { id: found.id })
             .execute();
         found = await this.cityRepository.findOne({ where: { id: id } });

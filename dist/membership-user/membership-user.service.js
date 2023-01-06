@@ -48,7 +48,7 @@ let MembershipUserService = class MembershipUserService {
         }
         catch (e) {
             if (e.code === '23505') {
-                throw new common_1.ConflictException("Phone already exists");
+                throw new common_1.ConflictException("Username already exists");
             }
             throw new common_1.InternalServerErrorException("Error code:" + e.code);
         }
@@ -83,6 +83,11 @@ let MembershipUserService = class MembershipUserService {
         membershipUser = await this.membershipUserRepository.validatePassword(signInMembershipUserDto, this.membershipRepository);
         delete membershipUser.password;
         delete membershipUser.salt;
+        for (let index = 0; index < membershipUser.membership.users.length; index++) {
+            delete membershipUser.membership.users[index].password;
+            delete membershipUser.membership.users[index].salt;
+            delete membershipUser.membership.users[index].accessToken;
+        }
         return membershipUser;
     }
     async getMembershipUserById(id) {

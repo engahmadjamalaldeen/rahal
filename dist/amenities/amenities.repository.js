@@ -12,9 +12,10 @@ const typeorm_1 = require("typeorm");
 const amenities_entity_1 = require("./amenities.entity");
 let AmenityRepository = class AmenityRepository extends typeorm_1.Repository {
     async addAmenity(createAmenityDto, reservationTypeRepository) {
-        const { name, image } = createAmenityDto;
+        const { name, nameAR, image } = createAmenityDto;
         const amenity = new amenities_entity_1.Amenity();
         amenity.name = name;
+        amenity.nameAR = nameAR;
         amenity.image = image;
         await this.save(amenity);
         return amenity;

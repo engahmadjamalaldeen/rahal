@@ -37,7 +37,7 @@ export class AmenitiesService {
     }
 
     async editAmenityById(id: number, createAmenityDto: CreateAmenityDto): Promise<Amenity> {
-        const { name, image } = createAmenityDto;
+        const { name, nameAR, image } = createAmenityDto;
         let found = await this.amenityRepository.findOne({ where: { id: id } });
 
         if (!found) {
@@ -46,7 +46,7 @@ export class AmenitiesService {
 
         const updated = await this.amenityRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, image: image })
+            .set({ name: name, nameAR: nameAR, image: image })
             .where("id = :id", { id: found.id })
             .execute();
             

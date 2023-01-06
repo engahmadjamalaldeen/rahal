@@ -50,6 +50,14 @@ __decorate([
     __metadata("design:type", String)
 ], City.prototype, "description", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], City.prototype, "nameAR", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], City.prototype, "descriptionAR", void 0);
+__decorate([
     (0, typeorm_1.OneToMany)(() => place_entity_1.Place, place => place.city, { eager: true }),
     __metadata("design:type", Array)
 ], City.prototype, "places", void 0);

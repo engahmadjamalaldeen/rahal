@@ -12,9 +12,10 @@ const typeorm_1 = require("typeorm");
 const category_entity_1 = require("./category.entity");
 let CategoryRepository = class CategoryRepository extends typeorm_1.Repository {
     async addCategory(createCategoryDto) {
-        const { name, page, endPoint, isActive } = createCategoryDto;
+        const { name, nameAR, page, endPoint, isActive } = createCategoryDto;
         const category = new category_entity_1.Category();
         category.name = name;
+        category.nameAR = nameAR;
         category.page = page;
         category.endPoint = endPoint;
         category.isActive = isActive;

@@ -47,7 +47,7 @@ export class MembershipUserService {
             await this.membershipUserRepository.save(membership);
         }catch(e){
             if(e.code === '23505'){
-                throw new ConflictException("Phone already exists");
+                throw new ConflictException("Username already exists");
             }
             throw new InternalServerErrorException("Error code:"+ e.code);
         }
@@ -91,7 +91,11 @@ export class MembershipUserService {
         membershipUser = await this.membershipUserRepository.validatePassword(signInMembershipUserDto, this.membershipRepository);
         delete membershipUser.password;
         delete membershipUser.salt;
-
+        for (let index = 0; index < membershipUser.membership.users.length; index++) {
+            delete membershipUser.membership.users[index].password;
+            delete membershipUser.membership.users[index].salt;
+            delete membershipUser.membership.users[index].accessToken;
+        }
         return membershipUser;
     }
 

@@ -12,10 +12,12 @@ const typeorm_1 = require("typeorm");
 const city_entity_1 = require("./city.entity");
 let CityRepository = class CityRepository extends typeorm_1.Repository {
     async addCity(createCityDto) {
-        const { name, description } = createCityDto;
+        const { name, description, nameAR, descriptionAR } = createCityDto;
         const city = new city_entity_1.City();
         city.name = name;
         city.description = description;
+        city.nameAR = nameAR;
+        city.nameAR = descriptionAR;
         await this.save(city);
         let fullCity = await this.createQueryBuilder('City')
             .leftJoinAndSelect('City.places', 'places')

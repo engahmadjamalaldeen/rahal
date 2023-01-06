@@ -14,7 +14,7 @@ const create_place_dto_1 = require("./dto/create-place-dto");
 const place_entity_1 = require("./place.entity");
 let PlaceRepository = class PlaceRepository extends typeorm_1.Repository {
     async addPlace(createPlaceDto, interestRepository, cityRepository) {
-        const { name, price, description, type, cityId, interestsIds } = createPlaceDto;
+        const { name, nameAR, usdPrice, price, description, descriptionAR, type, cityId, interestsIds } = createPlaceDto;
         let city = await cityRepository.findOne({ where: { id: cityId } });
         if (!city) {
             throw new common_1.NotFoundException(`City ID : ${cityId} not found`);
@@ -22,8 +22,11 @@ let PlaceRepository = class PlaceRepository extends typeorm_1.Repository {
         const place = new place_entity_1.Place();
         place.name = name;
         place.description = description;
+        place.nameAR = nameAR;
+        place.descriptionAR = descriptionAR;
         place.city = city;
         place.price = price;
+        place.usdPrice = usdPrice;
         place.isMembership = false;
         if (Object.values(create_place_dto_1.PlaceType).includes(type)) {
             place.type = type;

@@ -7,10 +7,11 @@ import { Interest } from "./interest.entity";
 @CustomRepository(Interest)
 export class InterestRepository extends Repository<Interest> {
     async addInterest(createInterestDto: CreateInterestDto): Promise<Interest> {
-        const { name, image } = createInterestDto;
+        const { name, nameAR, image } = createInterestDto;
         
         const interest = new Interest();
         interest.name = name;
+        interest.nameAR = nameAR;
         interest.image = image;
         // const found = await reservationTypeRepository.findOne({ where: { id: reservationTypeId } });
         // if(found){

@@ -9,7 +9,7 @@ import { Place } from "./place.entity";
 @CustomRepository(Place)
 export class PlaceRepository extends Repository<Place> {
     async addPlace(createPlaceDto: CreatePlaceDto, interestRepository: InterestRepository, cityRepository: CityRepository): Promise<Place> {
-        const { name, price, description, type, cityId, interestsIds } = createPlaceDto;
+        const { name , nameAR, usdPrice, price, description, descriptionAR, type, cityId, interestsIds } = createPlaceDto;
         
         let city = await cityRepository.findOne({where: {id: cityId}});
         if(!city){
@@ -18,8 +18,11 @@ export class PlaceRepository extends Repository<Place> {
         const place = new Place();
         place.name = name;
         place.description = description;
+        place.nameAR = nameAR;
+        place.descriptionAR = descriptionAR;
         place.city = city;
         place.price = price;
+        place.usdPrice = usdPrice;
         place.isMembership = false;
         if(Object.values(PlaceType).includes(type)){
             place.type = type;

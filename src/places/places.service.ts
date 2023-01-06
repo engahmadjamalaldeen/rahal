@@ -77,7 +77,7 @@ export class PlacesService {
     }
 
     async editPlaceById(id: number, createPlaceDto: CreatePlaceDto){
-        const {name, price, description, type, cityId, interestsIds} = createPlaceDto;
+        const {name, nameAR, usdPrice, price, description, descriptionAR, type, cityId, interestsIds} = createPlaceDto;
         let found = await this.placeRepository.findOne({ where: { id: id }, relations: ['city', 'tags'] });
 
         if (!found) {
@@ -102,7 +102,7 @@ export class PlacesService {
 
         const updated = await this.placeRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, price: price, description: description, type: type, city: city })
+            .set({ name: name, nameAR: nameAR, usdPrice: usdPrice, price: price, description: description, descriptionAR: descriptionAR, type: type, city: city })
             .where("id = :id", { id: found.id })
             .execute();
             

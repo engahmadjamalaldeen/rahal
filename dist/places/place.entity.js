@@ -57,8 +57,20 @@ __decorate([
 ], Place.prototype, "price", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], Place.prototype, "usdPrice", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Place.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Place.prototype, "nameAR", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Place.prototype, "descriptionAR", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

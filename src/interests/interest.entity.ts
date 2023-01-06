@@ -10,7 +10,8 @@ export class Interest extends BaseEntity {
 
     @Column()
     name: string;
-
+    @Column({nullable: true})
+    nameAR: string;
     //
     
     @Column({nullable: true})

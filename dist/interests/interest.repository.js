@@ -12,9 +12,10 @@ const typeorm_1 = require("typeorm");
 const interest_entity_1 = require("./interest.entity");
 let InterestRepository = class InterestRepository extends typeorm_1.Repository {
     async addInterest(createInterestDto) {
-        const { name, image } = createInterestDto;
+        const { name, nameAR, image } = createInterestDto;
         const interest = new interest_entity_1.Interest();
         interest.name = name;
+        interest.nameAR = nameAR;
         interest.image = image;
         await this.save(interest);
         return interest;

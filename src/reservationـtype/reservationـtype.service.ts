@@ -48,7 +48,7 @@ export class ReservationTypeService {
     }
 
     async editReservationTypeById(id: number, createReservationTypeDto: CreateReservationTypeDto): Promise<ReservationType> {
-        const { name, description, price, priceType, placeId, amenityIds } = createReservationTypeDto;
+        const { name, description, nameAR, descriptionAR, price, priceType, placeId, amenityIds } = createReservationTypeDto;
         let found = await this.reservationTypeRepository.findOne({ where: { id: id } });
 
         if (!found) {
@@ -71,7 +71,7 @@ export class ReservationTypeService {
 
         const updated = await this.reservationTypeRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, description: description, price: price, priceType: priceType })
+            .set({ name: name, description: description, nameAR: nameAR, descriptionAR: descriptionAR, price: price, priceType: priceType })
             .where("id = :id", { id: found.id })
             .execute();
             

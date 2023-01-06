@@ -46,14 +46,14 @@ let InterestsService = class InterestsService {
         return found;
     }
     async editInterestById(id, createInterestDto) {
-        const { name, image } = createInterestDto;
+        const { name, nameAR, image } = createInterestDto;
         let found = await this.interestRepository.findOne({ where: { id: id } });
         if (!found) {
             throw new common_1.NotFoundException(`Interest with ID ${id} not found`);
         }
         const updated = await this.interestRepository.createQueryBuilder()
             .update(found)
-            .set({ name: name, image: image })
+            .set({ name: name, nameAR: nameAR, image: image })
             .where("id = :id", { id: found.id })
             .execute();
         found = await this.interestRepository.findOne({ where: { id: id } });

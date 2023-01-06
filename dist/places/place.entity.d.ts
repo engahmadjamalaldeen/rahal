@@ -10,7 +10,10 @@ export declare class Place extends BaseEntity {
     id: number;
     name: string;
     price: string;
+    usdPrice: number;
     description: string;
+    nameAR: string;
+    descriptionAR: string;
     type: PlaceType;
     city: City;
     isMembership: boolean;
