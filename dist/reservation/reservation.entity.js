@@ -69,6 +69,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
+], Reservation.prototype, "usdPrice", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
 ], Reservation.prototype, "numOfDays", void 0);
 __decorate([
     (0, typeorm_1.AfterLoad)(),

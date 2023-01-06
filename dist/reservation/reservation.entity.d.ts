@@ -15,6 +15,7 @@ export declare class Reservation extends BaseEntity {
     place: Place;
     room: Room;
     price: number;
+    usdPrice: number;
     numOfDays: number;
     setComputed(): void;
 }

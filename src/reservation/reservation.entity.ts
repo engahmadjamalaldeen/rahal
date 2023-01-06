@@ -44,7 +44,8 @@ export class Reservation extends BaseEntity {
 
     @Column()
     price: number
-
+    @Column({nullable: true})
+    usdPrice: number;
     @Column({ nullable: true })
     numOfDays: number;
 

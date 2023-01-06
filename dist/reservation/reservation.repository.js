@@ -180,8 +180,12 @@ let ReservationRepository = class ReservationRepository extends typeorm_1.Reposi
                 var startDate = new Date(fromDate);
                 var days = (endDate.getDay() - startDate.getDay());
                 reservation.price = reservationType.price * days;
-                if (reservation.price < -1) {
+                reservation.usdPrice = reservationType.usdPrice * days;
+                if (reservation.price <= -1) {
                     reservation.price *= -1;
+                }
+                if (reservation.usdPrice <= -1) {
+                    reservation.usdPrice *= -1;
                 }
             }
             else {

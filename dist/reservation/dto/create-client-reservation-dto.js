@@ -16,5 +16,7 @@ var Status;
 (function (Status) {
     Status["pending"] = "pending";
     Status["confirmed"] = "confirmed";
+    Status["done"] = "done";
+    Status["canceled"] = "canceled";
 })(Status = exports.Status || (exports.Status = {}));
 //# sourceMappingURL=create-client-reservation-dto.js.map

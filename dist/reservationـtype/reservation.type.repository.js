@@ -14,9 +14,10 @@ const create_reservation_type_dto_1 = require("./dto/create-reservation-type-dto
 const reservation_type_entity_1 = require("./reservation\u0640type.entity");
 let ReservationTypeRepository = class ReservationTypeRepository extends typeorm_1.Repository {
     async addReservationType(createReservationTypeDto, placeRepository, amenityRepository) {
-        const { name, description, price, priceType, placeId, amenityIds } = createReservationTypeDto;
+        const { name, usdPrice, description, price, priceType, placeId, amenityIds } = createReservationTypeDto;
         const reservationType = new reservation_type_entity_1.ReservationType();
         reservationType.name = name;
+        reservationType.usdPrice = usdPrice;
         reservationType.description = description;
         reservationType.price = price;
         const place = await placeRepository.findOne({ where: { id: placeId } });

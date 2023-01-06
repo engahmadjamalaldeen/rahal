@@ -7,6 +7,7 @@ export declare class ReservationType extends BaseEntity {
     name: string;
     description: string;
     price: number;
+    usdPrice: number;
     priceType: PriceType;
     rooms: Room[];
     placeId: number;

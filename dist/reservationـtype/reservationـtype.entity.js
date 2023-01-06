@@ -36,6 +36,10 @@ __decorate([
     __metadata("design:type", Number)
 ], ReservationType.prototype, "price", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], ReservationType.prototype, "usdPrice", void 0);
+__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], ReservationType.prototype, "priceType", void 0);

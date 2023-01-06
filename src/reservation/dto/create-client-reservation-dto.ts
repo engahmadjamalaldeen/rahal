@@ -4,6 +4,7 @@ export class CreateClientReservationDto {
     type: PlaceType;
     status: Status;
     fromDate: string;
+    usdPrice: number;
     toDate: string;
     customerId: number;
     placeId: number;
@@ -21,5 +22,7 @@ export enum Operation {
 
 export enum Status {
     pending = 'pending',
-    confirmed = 'confirmed'
+    confirmed = 'confirmed',
+    done = 'done',
+    canceled = 'canceled'
 }

@@ -11,10 +11,11 @@ import { ReservationType } from "./reservationـtype.entity";
 @CustomRepository(ReservationType)
 export class ReservationTypeRepository extends Repository<ReservationType> {
     async addReservationType(createReservationTypeDto: CreateReservationTypeDto, placeRepository: PlaceRepository, amenityRepository: AmenityRepository): Promise<ReservationType> {
-        const { name, description, price, priceType, placeId, amenityIds } = createReservationTypeDto;
+        const { name, usdPrice, description, price, priceType, placeId, amenityIds } = createReservationTypeDto;
         
         const reservationType = new ReservationType();
         reservationType.name = name;
+        reservationType.usdPrice = usdPrice;
         reservationType.description = description;
         reservationType.price = price;
         const place = await placeRepository.findOne({ where: { id: placeId } });
