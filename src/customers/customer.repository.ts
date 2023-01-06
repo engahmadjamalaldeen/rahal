@@ -75,48 +75,68 @@ export class CustomerRepository extends Repository<Customer> {
     async updateCustomer(createCustomerDto: CreateCustomerDto,  cityRepository: CityRepository, interestRepository: InterestRepository): Promise<Customer> {
         const { id, phone, fullName, password, email, cityId, gender, status, numOfKids, interests } = createCustomerDto;
         
-        const salt = await bcrypt.genSalt();
+        // const salt = await bcrypt.genSalt();
 
-        const customer = await this.findOne({ where: { id: cityId } });;
-        customer.phone = phone;
-        if(customer.phone != phone) {
-            customer.phone = phone;
+        const customer = await this.findOne({ where: { id: id } });;
+        if(phone) {
+            if(customer.phone != phone) {
+                customer.phone = phone;
+            }
         }
-
-        customer.fullName = fullName;
-        customer.password = await this.hashPassword(password, salt);
-        customer.salt = salt;
-        customer.email = email;
-        customer.numOfKids = numOfKids;
-        const found = await cityRepository.findOne({ where: { id: cityId } });
-        if (found) {
-            customer.cityId = cityId;
+        
+        if(fullName) {
+            customer.fullName = fullName;
         }
-        else {
-            throw new NotFoundException("City Id not found");
+        // if(salt) {
+        //     customer.salt = salt;
+        // }
+        if(email) {
+            customer.email = email;
         }
-        if(Object.values(Gender).includes(gender)){
-            customer.gender = gender;
+        if(numOfKids) {
+            customer.numOfKids = numOfKids;
         }
-        else{
-            throw new ForbiddenException('Customer gender should be {MALE, FEMALE}');
-        }
-        if(Object.values(Status).includes(status)){
-            customer.status = status;
-        }
-        else{
-            throw new ForbiddenException('Customer status should be {MARRIED, SINGLE}');
-        }
-        customer.interests = [];
-        for(let i = 0; i < interests.length; i++){
-            let interest = await interestRepository.findOne({ where: { id: interests[i] } });
-            if (interest) {
-                customer.interests.push(interest);
+        if(cityId) {
+            const found = await cityRepository.findOne({ where: { id: cityId } });
+            if (found) {
+                customer.cityId = cityId;
             }
             else {
-                throw new NotFoundException("Interest Id not found");
+                throw new NotFoundException("City Id not found");
             }
         }
+        if(gender) {
+            if(Object.values(Gender).includes(gender)){
+                customer.gender = gender;
+            }
+            else{
+                throw new ForbiddenException('Customer gender should be {MALE, FEMALE}');
+            }
+        }
+        if(status) {
+            if(Object.values(Status).includes(status)){
+                customer.status = status;
+            }
+            else{
+                throw new ForbiddenException('Customer status should be {MARRIED, SINGLE}');
+            }
+        }
+        if(interests) {
+            customer.interests = [];
+            for(let i = 0; i < interests.length; i++){
+                let interest = await interestRepository.findOne({ where: { id: interests[i] } });
+                if (interest) {
+                    customer.interests.push(interest);
+                }
+                else {
+                    throw new NotFoundException("Interest Id not found");
+                }
+            }
+        }
+
+            // this.createQueryBuilder()
+            // .update(customer)
+            // .execute();
 
         // try{
         //     await this.save(customer);

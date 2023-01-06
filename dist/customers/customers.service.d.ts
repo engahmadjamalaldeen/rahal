@@ -24,6 +24,7 @@ export declare class CustomersService {
     constructor(reservationRepository: ReservationRepository, customerRepository: CustomerRepository, cityRepository: CityRepository, placeRepository: PlaceRepository, reviewRepository: ReviewRepository, blogRepository: BlogRepository, interestRepository: InterestRepository, categoryRepository: CategoryRepository, jwtService: JwtService);
     getCustomers(): Promise<Customer[]>;
     addCustomer(createCustomerDto: CreateCustomerDto): Promise<Customer>;
+    updateCustomer(createCustomerDto: CreateCustomerDto): Promise<Customer>;
     signIn(signInCustomerDto: SignInCustomerDto): Promise<Customer>;
     getCustomerById(id: number): Promise<{
         customer: Customer;

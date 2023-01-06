@@ -55,6 +55,63 @@ let CustomerRepository = class CustomerRepository extends typeorm_1.Repository {
         }
         return customer;
     }
+    async updateCustomer(createCustomerDto, cityRepository, interestRepository) {
+        const { id, phone, fullName, password, email, cityId, gender, status, numOfKids, interests } = createCustomerDto;
+        const customer = await this.findOne({ where: { id: id } });
+        ;
+        if (phone) {
+            if (customer.phone != phone) {
+                customer.phone = phone;
+            }
+        }
+        if (fullName) {
+            customer.fullName = fullName;
+        }
+        if (email) {
+            customer.email = email;
+        }
+        if (numOfKids) {
+            customer.numOfKids = numOfKids;
+        }
+        if (cityId) {
+            const found = await cityRepository.findOne({ where: { id: cityId } });
+            if (found) {
+                customer.cityId = cityId;
+            }
+            else {
+                throw new common_1.NotFoundException("City Id not found");
+            }
+        }
+        if (gender) {
+            if (Object.values(create_customer_dto_1.Gender).includes(gender)) {
+                customer.gender = gender;
+            }
+            else {
+                throw new common_1.ForbiddenException('Customer gender should be {MALE, FEMALE}');
+            }
+        }
+        if (status) {
+            if (Object.values(create_customer_dto_1.Status).includes(status)) {
+                customer.status = status;
+            }
+            else {
+                throw new common_1.ForbiddenException('Customer status should be {MARRIED, SINGLE}');
+            }
+        }
+        if (interests) {
+            customer.interests = [];
+            for (let i = 0; i < interests.length; i++) {
+                let interest = await interestRepository.findOne({ where: { id: interests[i] } });
+                if (interest) {
+                    customer.interests.push(interest);
+                }
+                else {
+                    throw new common_1.NotFoundException("Interest Id not found");
+                }
+            }
+        }
+        return customer;
+    }
     async validatePassword(signInCustomerDto) {
         const { phone, password } = signInCustomerDto;
         const user = await this.findOne({ where: { phone: phone } });

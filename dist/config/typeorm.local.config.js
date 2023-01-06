@@ -21,7 +21,7 @@ exports.typeOrmLocalConfig = {
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: 'anaobada',
+    password: 'ahmad',
     database: 'rahal',
     entities: [city_entity_1.City, blog_entity_1.Blog, city_image_entity_1.CityImage, customer_entity_1.Customer, membership_entity_1.Membership, place_entity_1.Place, trip_entity_1.Trip, reservation_entity_1.Reservation, reservation_type_entity_1.ReservationType, amenities_entity_1.Amenity, review_entity_1.Review, interest_entity_1.Interest, category_entity_1.Category, room_entity_1.Room, membership_user_entity_1.MembershipUser],
     synchronize: true

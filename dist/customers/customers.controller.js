@@ -30,6 +30,9 @@ let CustomersController = class CustomersController {
     addCustomer(createCustomerDto) {
         return this.customersService.addCustomer(createCustomerDto);
     }
+    updateCustomer(createCustomerDto) {
+        return this.customersService.updateCustomer(createCustomerDto);
+    }
     signIn(signInCustomerDto) {
         return this.customersService.signIn(signInCustomerDto);
     }
@@ -67,6 +70,14 @@ __decorate([
     __metadata("design:paramtypes", [create_customer_dto_1.CreateCustomerDto]),
     __metadata("design:returntype", Promise)
 ], CustomersController.prototype, "addCustomer", null);
+__decorate([
+    (0, common_1.Post)('/updateCustomer'),
+    (0, common_1.UsePipes)(common_1.ValidationPipe),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_customer_dto_1.CreateCustomerDto]),
+    __metadata("design:returntype", Promise)
+], CustomersController.prototype, "updateCustomer", null);
 __decorate([
     (0, common_1.Post)('/signin'),
     __param(0, (0, common_1.Body)()),

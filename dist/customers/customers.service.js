@@ -66,6 +66,25 @@ let CustomersService = class CustomersService {
         delete customer.salt;
         return customer;
     }
+    async updateCustomer(createCustomerDto) {
+        const { id, phone, fullName, password, email, cityId, gender, status, numOfKids } = createCustomerDto;
+        let customer = await this.customerRepository.updateCustomer(createCustomerDto, this.cityRepository, this.interestRepository);
+        let payload = { phone };
+        const accessToken = await this.jwtService.sign(payload);
+        customer.accessToken = accessToken;
+        try {
+            await this.customerRepository.save(customer);
+        }
+        catch (e) {
+            if (e.code === '23505') {
+                throw new common_1.ConflictException("Phone already exists");
+            }
+            throw new common_1.InternalServerErrorException("Error code:" + e.code);
+        }
+        delete customer.password;
+        delete customer.salt;
+        return customer;
+    }
     async signIn(signInCustomerDto) {
         let customer = await this.customerRepository.validatePassword(signInCustomerDto);
         if (!customer) {
@@ -86,7 +105,13 @@ let CustomersService = class CustomersService {
     }
     async getCustomerById(id) {
         const found = await this.customerRepository.findOne({ where: { id: id },
-            relations: ['reservations', 'reservations.place', 'reservations.room', 'tripsCreated', 'interests'] });
+            relations: [
+                'reservations',
+                'reservations.place',
+                'reservations.room',
+                'tripsCreated',
+                'interests'
+            ] });
         const city = await this.cityRepository.findOne({ where: { id: found.cityId } });
         if (!found) {
             throw new common_1.NotFoundException(`Customer with ID ${id} not found`);
@@ -94,6 +119,8 @@ let CustomersService = class CustomersService {
         delete found.accessToken;
         delete found.password;
         delete found.salt;
+        const res = new Map();
+        res.set("name", "Logrocket");
         var map = {
             'customer': found,
             'city': city

@@ -10,6 +10,7 @@ import { CategoryRepository } from "src/categories/category.repository";
 import { ReservationRepository } from 'src/reservation/reservation.repository';
 export declare class CustomerRepository extends Repository<Customer> {
     addCustomer(createCustomerDto: CreateCustomerDto, cityRepository: CityRepository, interestRepository: InterestRepository): Promise<Customer>;
+    updateCustomer(createCustomerDto: CreateCustomerDto, cityRepository: CityRepository, interestRepository: InterestRepository): Promise<Customer>;
     validatePassword(signInCustomerDto: SignInCustomerDto): Promise<Customer>;
     private hashPassword;
     getHomePage(id: number, reservationRepository: ReservationRepository, cityRepository: CityRepository, placeRepository: PlaceRepository, blogRepository: BlogRepository, categoryRepository: CategoryRepository): Promise<{

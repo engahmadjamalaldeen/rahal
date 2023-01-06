@@ -14,9 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReservationTypeController = void 0;
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
-const roles_guard_1 = require("../helpers/roles.guard");
-const create_membership_user_dto_1 = require("../membership-user/dto/create-membership-user-dto");
 const create_reservation_type_dto_1 = require("./dto/create-reservation-type-dto");
 const reservation_type_service_1 = require("./reservation\u0640type.service");
 let ReservationTypeController = class ReservationTypeController {
@@ -97,8 +94,6 @@ __decorate([
 ], ReservationTypeController.prototype, "getReservationTypeReservations", null);
 ReservationTypeController = __decorate([
     (0, common_1.Controller)('reservationType'),
-    (0, common_1.UseGuards)((0, roles_guard_1.default)(create_membership_user_dto_1.Role.ADMIN)),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __metadata("design:paramtypes", [reservation_type_service_1.ReservationTypeService])
 ], ReservationTypeController);
 exports.ReservationTypeController = ReservationTypeController;

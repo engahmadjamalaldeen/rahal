@@ -21,7 +21,7 @@ export const typeOrmLocalConfig : TypeOrmModuleOptions = {
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: 'anaobada',
+    password: 'ahmad',
     database: 'rahal',
     entities: [City, Blog, CityImage, Customer, Membership, Place, Trip, Reservation, ReservationType, Amenity, Review, Interest, Category, Room, MembershipUser],
     synchronize: true

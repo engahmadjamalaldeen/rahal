@@ -20,13 +20,13 @@ exports.typeOrmConfig = {
     ssl: {
         rejectUnauthorized: false,
     },
-    url: 'postgresql://postgres:jBFQY3QZbBQth47HBnDX@containers-us-west-122.railway.app:5941/railway',
+    url: 'postgres://rahaldatabase:p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn@dpg-cek5mdcgqg4ekmegvj5g-a/rahaldatabase',
     type: 'postgres',
-    host: 'containers-us-west-122.railway.app',
-    port: 5941,
-    username: 'postgres',
-    password: 'jBFQY3QZbBQth47HBnDX',
-    database: 'railway',
+    host: 'dpg-cek5mdcgqg4ekmegvj5g-a',
+    port: 5432,
+    username: 'rahaldatabase',
+    password: 'p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn',
+    database: 'rahaldatabase',
     entities: [city_entity_1.City, blog_entity_1.Blog, city_image_entity_1.CityImage, customer_entity_1.Customer, membership_entity_1.Membership, place_entity_1.Place, trip_entity_1.Trip, reservation_entity_1.Reservation, reservation_type_entity_1.ReservationType, amenities_entity_1.Amenity, review_entity_1.Review, interest_entity_1.Interest, category_entity_1.Category, room_entity_1.Room, membership_user_entity_1.MembershipUser],
     synchronize: true
 };

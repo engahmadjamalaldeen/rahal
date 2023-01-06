@@ -14,6 +14,7 @@ export declare class CustomersController {
         blogs: import("../blogs/blog.entity").Blog[];
     }>;
     addCustomer(createCustomerDto: CreateCustomerDto): Promise<Customer>;
+    updateCustomer(createCustomerDto: CreateCustomerDto): Promise<Customer>;
     signIn(signInCustomerDto: SignInCustomerDto): Promise<Customer>;
     getCustomerById(id: number): Promise<{
         customer: Customer;
