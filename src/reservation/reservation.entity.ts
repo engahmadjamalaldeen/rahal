@@ -18,7 +18,7 @@ export class Reservation extends BaseEntity {
     @Column()
     placeType: PlaceType;
 
-    @Column()
+    @Column({ nullable: true })
     status: Status;
     // @Column()
     // reservationType: ReservationType;
