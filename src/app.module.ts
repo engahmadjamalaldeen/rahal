@@ -20,7 +20,7 @@ import { MembershipUserModule } from './membership-user/membership-user.module';
 import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeOrmConfig),
+    TypeOrmModule.forRoot(typeOrmLocalConfig),
     CitiesModule,
     PlacesModule,
     MembershipsModule,

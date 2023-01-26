@@ -24,9 +24,9 @@ export const typeOrmConfig : TypeOrmModuleOptions = {
     type: 'postgres',
     host: 'dpg-cek5mdcgqg4ekmegvj5g-a',
     port: 5432,
-    username: 'rahaldatabase',
-    password: 'p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn',
-    database: 'rahaldatabase',
+    username: 'admin',
+    password: 'rahal@password',
+    database: 'rahal_db',
     entities: [City, Blog, CityImage, Customer, Membership, Place, Trip, Reservation, ReservationType, Amenity, Review, Interest, Category, Room, MembershipUser],
     synchronize: true
 }//

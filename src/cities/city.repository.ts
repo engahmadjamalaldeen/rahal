@@ -12,7 +12,7 @@ export class CityRepository extends Repository<City> {
         city.name = name;
         city.description = description;
         city.nameAR = nameAR;
-        city.nameAR = descriptionAR;
+        city.descriptionAR = descriptionAR;
         await this.save(city);
         // await city.save();
 

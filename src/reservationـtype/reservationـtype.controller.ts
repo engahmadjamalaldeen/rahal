@@ -10,7 +10,8 @@ import { ReservationType } from './reservationـtype.entity';
 import { ReservationTypeService } from './reservationـtype.service';
 
 @Controller('reservationType')
-
+// @UseGuards(RoleGuard(Role.ADMIN))
+// @UseGuards(AuthGuard())
 export class ReservationTypeController {
     constructor(private reservationTypeService: ReservationTypeService){}
 

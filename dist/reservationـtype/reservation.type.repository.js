@@ -16,9 +16,13 @@ let ReservationTypeRepository = class ReservationTypeRepository extends typeorm_
     async addReservationType(createReservationTypeDto, placeRepository, amenityRepository) {
         const { name, nameAR, usdPrice, description, descriptionAR, price, priceType, placeId, amenityIds } = createReservationTypeDto;
         const reservationType = new reservation_type_entity_1.ReservationType();
+        console.log(nameAR);
+        console.log(descriptionAR);
         reservationType.name = name;
+        reservationType.nameAR = nameAR;
         reservationType.usdPrice = usdPrice;
         reservationType.description = description;
+        reservationType.descriptionAR = descriptionAR;
         reservationType.price = price;
         const place = await placeRepository.findOne({ where: { id: placeId } });
         if (place) {

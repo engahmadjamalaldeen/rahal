@@ -8,8 +8,10 @@ export class Amenity extends BaseEntity {
 
     @Column()
     name: string;
+
     @Column({nullable: true})
     nameAR: string;
+    
     @Column({nullable: true})
     image: string;
 

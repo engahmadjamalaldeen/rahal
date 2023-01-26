@@ -27,68 +27,68 @@ export class CitiesController {
         return this.citiesService.addCity(createCityDto);
     }
 
-    @Post('/uploadImages')
+    // @Post('/uploadImages')
     // @Header('Content-Type', 'image/png')
-    @UseInterceptors(AnyFilesInterceptor())
-    async uploadFile(@UploadedFiles() file: Express.Multer.File, @Query('cityId') cityId: number, @Req() req: Request, @Query('fileName') fileName: string){
-        const gc = new Storage({
-            projectId: 'freshchat-test-4e8cb',
-            keyFilename: 'freshchat-test-4e8cb-firebase-adminsdk-yv9vt-39d630e9be.json',
-        });
+    // @UseInterceptors(AnyFilesInterceptor())
+    // async uploadFile(@UploadedFiles() file: Express.Multer.File, @Query('cityId') cityId: number, @Req() req: Request, @Query('fileName') fileName: string){
+    //     const gc = new Storage({
+    //         projectId: 'freshchat-test-4e8cb',
+    //         keyFilename: 'freshchat-test-4e8cb-firebase-adminsdk-yv9vt-39d630e9be.json',
+    //     });
 
-        gc.getBuckets();
+    //     gc.getBuckets();
 
-        const bucket = gc.bucket("freshchat-test-4e8cb.appspot.com");
-        // console.log(file);
-        // console.log(file[0].originalname);
-        const blob = bucket.file(file[0].originalname);
+    //     const bucket = gc.bucket("freshchat-test-4e8cb.appspot.com");
+    //     // console.log(file);
+    //     // console.log(file[0].originalname);
+    //     const blob = bucket.file(file[0].originalname);
         
-        const metadata = {
-            metadata: {
-            //   // This line is very important. It's to create a download token.
-            //   firebaseStorageDownloadTokens: uuid()
+    //     const metadata = {
+    //         metadata: {
+    //         //   // This line is very important. It's to create a download token.
+    //         //   firebaseStorageDownloadTokens: uuid()
     
-            },
-            contentType: 'image/png',
-            cacheControl: 'public, max-age=31536000',
-          };
+    //         },
+    //         contentType: 'image/png',
+    //         cacheControl: 'public, max-age=31536000',
+    //       };
 
-          console.log(blob);
+    //       console.log(blob);
 
-        bucket.upload(file[0].originalname, {
-            gzip: true,
-            metadata: metadata,
-        });
+    //     bucket.upload(file[0].originalname, {
+    //         gzip: true,
+    //         metadata: metadata,
+    //     });
 
-        const blobStream = blob.createWriteStream({
-            metadata: {
-                contentType: file[0].mimetype,
-                size: file[0].size,
-            },
-            resumable: false
-        });
-
-
-        blobStream.on('finish', () => {
-            const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
-            // console.log(publicUrl);
-
-            blob.makePublic().then(() => {
-                // res.status(200).send(`Success!\n Image uploaded to ${publicUrl}`);
-            })
-        })
-
-        blobStream.end();
-
-        const urls = [];
-
-        // for(let i = 0; i < file.length; i++){
-            urls.push(`${bucket.name}/${blob.name}`);
-        // }
+    //     const blobStream = blob.createWriteStream({
+    //         metadata: {
+    //             contentType: file[0].mimetype,
+    //             size: file[0].size,
+    //         },
+    //         resumable: false
+    //     });
 
 
-        return this.citiesService.addImages(urls, cityId);
-    }
+    //     blobStream.on('finish', () => {
+    //         const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+    //         // console.log(publicUrl);
+
+    //         blob.makePublic().then(() => {
+    //             // res.status(200).send(`Success!\n Image uploaded to ${publicUrl}`);
+    //         })
+    //     })
+
+    //     blobStream.end();
+
+    //     const urls = [];
+
+    //     // for(let i = 0; i < file.length; i++){
+    //         urls.push(`${bucket.name}/${blob.name}`);
+    //     // }
+
+
+    //     return this.citiesService.addImages(urls, cityId);
+    // }
 
     // @Post('/uploadImages')
     // // @Header('Content-Type', 'image/png')

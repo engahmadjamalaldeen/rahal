@@ -14,9 +14,13 @@ export class ReservationTypeRepository extends Repository<ReservationType> {
         const { name, nameAR, usdPrice, description, descriptionAR, price, priceType, placeId, amenityIds } = createReservationTypeDto;
         
         const reservationType = new ReservationType();
+        console.log(nameAR);
+        console.log(descriptionAR);
         reservationType.name = name;
+        reservationType.nameAR = nameAR;
         reservationType.usdPrice = usdPrice;
         reservationType.description = description;
+        reservationType.descriptionAR = descriptionAR;
         reservationType.price = price;
         const place = await placeRepository.findOne({ where: { id: placeId } });
         

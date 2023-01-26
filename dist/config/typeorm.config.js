@@ -24,9 +24,9 @@ exports.typeOrmConfig = {
     type: 'postgres',
     host: 'dpg-cek5mdcgqg4ekmegvj5g-a',
     port: 5432,
-    username: 'rahaldatabase',
-    password: 'p2q6JPHdnALU9CpVVHXJgqj7kctd8Xtn',
-    database: 'rahaldatabase',
+    username: 'admin',
+    password: 'rahal@password',
+    database: 'rahal_db',
     entities: [city_entity_1.City, blog_entity_1.Blog, city_image_entity_1.CityImage, customer_entity_1.Customer, membership_entity_1.Membership, place_entity_1.Place, trip_entity_1.Trip, reservation_entity_1.Reservation, reservation_type_entity_1.ReservationType, amenities_entity_1.Amenity, review_entity_1.Review, interest_entity_1.Interest, category_entity_1.Category, room_entity_1.Room, membership_user_entity_1.MembershipUser],
     synchronize: true
 };

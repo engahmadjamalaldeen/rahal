@@ -85,8 +85,9 @@ let ReservationRepository = class ReservationRepository extends typeorm_1.Reposi
             }
             let parsedFromDate = new Date(fromDate);
             let parsedtoDate = new Date(toDate);
-            reservation.fromDate = `${parsedFromDate.getFullYear()}-${parsedFromDate.getMonth() + 1 < 10 ? '0' : ''}${parsedFromDate.getMonth() + 1}-${parsedFromDate.getDate()}`;
-            reservation.toDate = `${parsedtoDate.getFullYear()}-${parsedtoDate.getMonth() + 1 < 10 ? '0' : ''}${parsedtoDate.getMonth() + 1}-${parsedtoDate.getDate()}`;
+            console.log(parsedFromDate);
+            reservation.fromDate = `${parsedFromDate.getFullYear()}-${parsedFromDate.getMonth() + 1 < 10 ? '0' : ''}${parsedFromDate.getMonth() + 1}-${parsedFromDate.getDate() + 1}-12`;
+            reservation.toDate = `${parsedtoDate.getFullYear()}-${parsedtoDate.getMonth() + 1 < 10 ? '0' : ''}${parsedtoDate.getMonth() + 1}-${parsedtoDate.getDate()}-12`;
             await this.save(reservation);
             delete reservation.customer.accessToken;
             delete reservation.customer.password;

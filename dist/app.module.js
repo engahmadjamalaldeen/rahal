@@ -10,7 +10,7 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const cities_module_1 = require("./cities/cities.module");
-const typeorm_config_1 = require("./config/typeorm.config");
+const typeorm_local_config_1 = require("./config/typeorm.local.config");
 const places_module_1 = require("./places/places.module");
 const memberships_module_1 = require("./memberships/memberships.module");
 const customers_module_1 = require("./customers/customers.module");
@@ -31,7 +31,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forRoot(typeorm_config_1.typeOrmConfig),
+            typeorm_1.TypeOrmModule.forRoot(typeorm_local_config_1.typeOrmLocalConfig),
             cities_module_1.CitiesModule,
             places_module_1.PlacesModule,
             memberships_module_1.MembershipsModule,

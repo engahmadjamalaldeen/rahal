@@ -17,7 +17,7 @@ let CityRepository = class CityRepository extends typeorm_1.Repository {
         city.name = name;
         city.description = description;
         city.nameAR = nameAR;
-        city.nameAR = descriptionAR;
+        city.descriptionAR = descriptionAR;
         await this.save(city);
         let fullCity = await this.createQueryBuilder('City')
             .leftJoinAndSelect('City.places', 'places')
