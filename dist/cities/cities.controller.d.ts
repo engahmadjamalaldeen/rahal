@@ -4,6 +4,11 @@ import { CreateCityDto } from './dto/create-city-dto';
 export declare class CitiesController {
     private citiesService;
     constructor(citiesService: CitiesService);
+    uploadedFile(file: any): Promise<{
+        originalname: any;
+        filename: any;
+    }>;
+    seeUploadedFile(image: any, res: any): any;
     getCities(): Promise<City[]>;
     addCity(createCityDto: CreateCityDto): Promise<City>;
     getCityById(id: number): Promise<City>;

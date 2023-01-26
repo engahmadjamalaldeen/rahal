@@ -9,11 +9,35 @@ import { City } from './city.entity';
 import { CreateCityDto } from './dto/create-city-dto';
 import * as multerGoogleStorage from 'multer-google-storage';
 import { Bucket, Storage, UploadCallback } from '@google-cloud/storage';
-
+import { imageFileFilter, editFileName } from '../utilies/file-upload.utils';
+import { Response } from 'express';
+import {
+    Res
+  } from '@nestjs/common';
 @Controller('cities')
 // @UseGuards(AuthGuard())
 export class CitiesController {
     constructor(private citiesService: CitiesService){}
+    @Post('upload')
+    @UseInterceptors(
+        FileInterceptor('image', {
+          storage: diskStorage({
+            destination: './uploads/images',
+            filename: editFileName,
+        })
+      }),
+      )
+      async uploadedFile(@UploadedFile() file) {
+        const response = {
+          originalname: file.originalname,
+          filename: file.filename,
+        };
+        return response;
+      }
+      @Get(':imgpath')
+    seeUploadedFile(@Param('imgpath') image, @Res() res) {
+    return res.sendFile(image, { root: './uploads/images' });
+    }
 
 
     @Get('')

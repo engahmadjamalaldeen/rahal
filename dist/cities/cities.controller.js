@@ -14,11 +14,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CitiesController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer_1 = require("multer");
 const cities_service_1 = require("./cities.service");
 const create_city_dto_1 = require("./dto/create-city-dto");
+const file_upload_utils_1 = require("../utilies/file-upload.utils");
+const common_2 = require("@nestjs/common");
 let CitiesController = class CitiesController {
     constructor(citiesService) {
         this.citiesService = citiesService;
+    }
+    async uploadedFile(file) {
+        const response = {
+            originalname: file.originalname,
+            filename: file.filename,
+        };
+        return response;
+    }
+    seeUploadedFile(image, res) {
+        return res.sendFile(image, { root: './uploads/images' });
     }
     getCities() {
         return this.citiesService.getCities();
@@ -36,6 +50,27 @@ let CitiesController = class CitiesController {
         return this.citiesService.deleteCityById(id);
     }
 };
+__decorate([
+    (0, common_1.Post)('upload'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', {
+        storage: (0, multer_1.diskStorage)({
+            destination: './uploads/images',
+            filename: file_upload_utils_1.editFileName,
+        })
+    })),
+    __param(0, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], CitiesController.prototype, "uploadedFile", null);
+__decorate([
+    (0, common_1.Get)(':imgpath'),
+    __param(0, (0, common_1.Param)('imgpath')),
+    __param(1, (0, common_2.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], CitiesController.prototype, "seeUploadedFile", null);
 __decorate([
     (0, common_1.Get)(''),
     __metadata("design:type", Function),
